@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package = "go-grpc/proto";
+
+import "google/protobuf/timestamp.proto";
+
+package example;
+
+service Items {
+  rpc Create (RequestItem) returns (ResponseItem) {}
+}
+
+enum Option {
+  NONE = 0;
+  OPTION_ONE = 1;
+  OPTION_TWO = 2;
+}
+
+message RequestItem {
+  string description = 2;
+}
+
+message ResponseItem {
+  string description = 1;
+  google.protobuf.Timestamp time = 2;
+  int32 val1 = 3;
+  float val2 = 4;
+  Option opt = 5;
+}
